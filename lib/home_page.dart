@@ -1,3 +1,5 @@
+import 'package:circuit_diagram/capacitor.dart';
+import 'package:circuit_diagram/fuse.dart';
 import 'package:circuit_diagram/wire.dart';
 import 'package:flutter/material.dart';
 
@@ -15,10 +17,22 @@ class _HomePageState extends State<HomePage> {
         appBar: AppBar(
           title: Text('CircuitDiagram'),
         ),
-        body: Center(child: _diagram()));
+        body: Container(child: Center(child: _diagram()), color: Colors.black));
   }
 
   Widget _diagram() {
-    return Row(children: [Wire(20)]);
+    if (false) {
+      return Column(children: [
+        Container(height: 100.1, color: Colors.yellow),
+        Container(height: 100.2, color: Colors.yellow),
+        Container(height: 100.4, color: Colors.yellow)
+      ]);
+    }
+    return Row(children: [
+      Expanded(child: Container(child: Wire())),
+      Container(child: Capacitor()),
+      Fuse(),
+      Expanded(child: Container(child: Wire()))
+    ]);
   }
 }
